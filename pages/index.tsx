@@ -1,8 +1,28 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import MedicinePrice from "../components/MedicinePrice";
+import LocationItem from "../components/LocationItem";
+import UserLocation from "../components/UserLocation";
 
-const meds = Array.from({ length: 9 * 2 }).fill({});
+export const locations = [
+  {
+    lat: -26.909413,
+    lng: -48.694893,
+    label: "label",
+    phone: "(01) 2345-6789",
+  },
+  {
+    lat: -26.90072411564434,
+    lng: -48.67754899066218,
+    label: "label",
+    phone: "(01) 2345-6789",
+  },
+  {
+    lat: -26.896070118570382,
+    lng: -48.69431291250385,
+    label: "label",
+    phone: "(01) 2345-6789",
+  },
+];
 
 const Home: NextPage = () => {
   return (
@@ -25,18 +45,7 @@ const Home: NextPage = () => {
         </header>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 py-2 px-2 sm:px-6">
-          {meds.map((a, i) => (
-            <MedicinePrice
-              special={i === 0 || i === 1}
-              currentPrice={2990}
-              originalPrice={3590}
-              loyaltyPrice={2490}
-              description="Rerum vero dolor pariatur dolorem eius maxime. Odio aut dolores et quas maxime reprehenderit ea architecto. Nihil esse amet molestiae sit voluptatibus cum autem et. Est in atque eligendi id dolores ratione facilis quaerat. Ab saepe nihil et. Animi architecto consequatur voluptatibus"
-              subTitle="Nihil esse amet molestiae sit voluptatibus cum autem et."
-              title="Nihil esse amet molestiae"
-              key={i}
-            />
-          ))}
+          <UserLocation />
         </div>
 
         <footer className="bg-green-900 px-2 sm:px-6 py-2">
