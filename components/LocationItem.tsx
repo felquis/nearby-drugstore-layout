@@ -29,13 +29,14 @@ export default function LocationItem({
         <a
           className="text-sm hover:underline"
           href={`tel:${phone.replace(/\D/g, "")}`}
+          rel="noreferrer"
         >
           {phone}
         </a>
         <a
           href={`http://maps.google.com/?q=${lat},${lng}`}
           target="_blank"
-          rel="noopener"
+          rel="noreferrer"
         >
           Open Google Maps
         </a>
