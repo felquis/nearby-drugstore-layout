@@ -32,7 +32,11 @@ export default function LocationItem({
         >
           {phone}
         </a>
-        <a href={`http://maps.google.com/?q=${lat},${lng}`} target="_blank">
+        <a
+          href={`http://maps.google.com/?q=${lat},${lng}`}
+          target="_blank"
+          rel="noopener"
+        >
           Open Google Maps
         </a>
       </div>
