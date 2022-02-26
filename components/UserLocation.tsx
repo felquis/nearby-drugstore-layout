@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import haversine from "haversine";
+import { BiCurrentLocation } from "@react-icons/all-files/bi/BiCurrentLocation";
+import { MdLocationDisabled } from "@react-icons/all-files/md/MdLocationDisabled";
 
 import { locations } from "../pages";
 import LocationItem from "./LocationItem";
@@ -36,10 +38,15 @@ export default function UserLocation() {
 
   return (
     <>
-      <div>
+      <div className="mb-2">
         <button
+          className={`font-semibold rounded-md p-4  inline-flex items-center gap-2 ${
+            location
+              ? "focus:bg-green-300 bg-green-100 hover:bg-green-200 text-green-700"
+              : "focus:bg-yellow-300 bg-yellow-100 hover:bg-yellow-200 text-yellow-700 "
+          }`}
           onClick={() => {
-            window.navigator.geolocation.getCurrentPosition(
+            window.navigator.geolocation.watchPosition(
               (success) => {
                 console.log(success);
                 setLocation(success.coords);
@@ -54,13 +61,23 @@ export default function UserLocation() {
             );
           }}
         >
-          Find Closest To Me
+          {location
+            ? `Location ${location.accuracy}m precise`
+            : "Find Closest To Me"}
+
+          {location ? (
+            <BiCurrentLocation className="text-xl" />
+          ) : (
+            <MdLocationDisabled className="text-xl" />
+          )}
         </button>
       </div>
 
-      {locationList.map((a, i) => (
-        <LocationItem key={i} {...a} />
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+        {locationList.map((a, i) => (
+          <LocationItem key={i} {...a} />
+        ))}
+      </div>
     </>
   );
 }

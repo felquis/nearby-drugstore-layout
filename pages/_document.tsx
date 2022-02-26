@@ -12,7 +12,7 @@ export default function Document() {
           sizes="any"
         />
       </Head>
-      <body className="bg-green-400">
+      <body className="bg-red-400">
         <Main />
         <NextScript />
       </body>
